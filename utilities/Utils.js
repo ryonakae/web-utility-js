@@ -53,8 +53,7 @@ module.exports = class Utils {
     return Math.floor(new Date().getTime() / 1000);
   }
 
-  // wait for promise
-  wait(delay) {
+  waitPromise(delay) {
     return value => {
       return new Promise(resolve => {
         setTimeout(() => {

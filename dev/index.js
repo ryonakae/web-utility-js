@@ -20,7 +20,7 @@ new Promise(resolve => {
       }, 100);
     });
   })
-  .then(utils.wait(2000))
+  .then(utils.waitPromise(2000))
   .then(value => {
     return new Promise(resolve => {
       console.log("3rd promise");
