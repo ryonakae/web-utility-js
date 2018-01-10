@@ -1,7 +1,8 @@
 import Utils from "../utilities/Utils";
-import ResizeManager from "../utilities/ResizeManager";
-import ScrollManager from "../utilities/ScrollManager";
+import Resizer from "../utilities/Resizer";
+import Scroller from "../utilities/Scroller";
 
+// utils
 const utils = new Utils();
 utils.init();
 
@@ -29,3 +30,19 @@ new Promise(resolve => {
       }, 100);
     });
   });
+
+// resizer
+const resizer = new Resizer();
+resizer.init();
+
+resizer.add("onResize", () => {
+  console.log("resized");
+});
+
+// scroller
+const scroller = new Scroller();
+scroller.init();
+
+scroller.add("onScroll", () => {
+  console.log("scrolled");
+});

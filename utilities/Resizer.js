@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = class ResizeManager {
+module.exports = class Resizer {
   constructor() {
     this.windowHeight = 0;
     this.windowWidth = 0;
@@ -22,10 +22,12 @@ module.exports = class ResizeManager {
 
   add(name, func) {
     this.functions[name] = func;
+    this.update();
   }
 
   remove(name) {
     delete this.functions[name];
+    this.update();
   }
 
   onResize() {

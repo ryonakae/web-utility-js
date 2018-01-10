@@ -1,13 +1,15 @@
 "use strict";
 
-module.exports = class ScrollManager {
-  constructor(options) {
-    this.utils = options.utils;
+const UAParser = require("ua-parser-js");
 
-    this.scrollAmount = 0;
-    this.scrollDirection = null;
+module.exports = class Scroller {
+  constructor() {
+    this.ua = null;
+
     this.scrollTop = 0;
     this.scrollBottom = 0;
+    this.scrollAmount = 0;
+    this.scrollDirection = null;
     this.touchStartY = 0;
 
     this.functions = {};
@@ -16,10 +18,19 @@ module.exports = class ScrollManager {
   }
 
   init() {
+    const parser = new UAParser();
+    this.ua = this.parser.getResult();
     this.update();
 
-    // pcはwheelイベント、タッチデバイスはtouchstart & touchmoveイベント
-    if (this.utils.getDevice() === "pc") {
+    window.addEventListener(
+      "scroll",
+      () => {
+        this.onScroll();
+      },
+      false
+    );
+
+    if (this.ua.device.type === undefined) {
       window.addEventListener(
         "wheel",
         e => {
@@ -43,22 +54,16 @@ module.exports = class ScrollManager {
         false
       );
     }
-
-    window.addEventListener(
-      "scroll",
-      e => {
-        this.onScroll();
-      },
-      false
-    );
   }
 
   add(name, func) {
     this.functions[name] = func;
+    this.update();
   }
 
   remove(name) {
     delete this.functions[name];
+    this.update();
   }
 
   onScroll(event) {
@@ -85,24 +90,20 @@ module.exports = class ScrollManager {
     this.scrollTop = window.pageYOffset;
     this.scrollBottom = this.getScrollTop() + window.innerHeight;
 
-    // スクロール量を設定
-    // update関数の引数にeventが入ってる時だけ実行
-    if (event) {
-      if (this.utils.getDevice() === "pc") {
+    if (event !== undefined) {
+      if (this.ua.device.type === undefined) {
         this.scrollAmount = event.deltaY;
       } else {
         this.scrollAmount = this.touchStartY - event.changedTouches[0].pageY;
       }
     }
 
-    // スクロール方向を設定
     if (this.getAmount() > 0) {
       this.scrollDirection = "down";
     } else if (this.getAmount() < 0) {
       this.scrollDirection = "up";
     }
 
-    // this.functionsに入っている関数をすべて実行
     if (Object.keys(this.functions).length > 0) {
       for (const func in this.functions) {
         this.functions[func]();
