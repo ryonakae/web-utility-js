@@ -4,7 +4,8 @@
   "description": "Utilities for web develop",
   "main": "index.js",
   "scripts": {
-    "test": "prettier '**/*.js' --write"
+    "dev": "webpack-dev-server --config dev/webpack.config.js",
+    "format": "prettier '**/*.js' --write"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,11 @@
     "ua-parser-js": "^0.7.17"
   },
   "devDependencies": {
-    "prettier": "^1.9.2"
+    "@babel/core": "^7.0.0-beta.37",
+    "@babel/preset-env": "^7.0.0-beta.37",
+    "babel-loader": "^8.0.0-beta.0",
+    "prettier": "^1.9.2",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.10.1"
   }
 }
