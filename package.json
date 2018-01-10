@@ -1,6 +1,6 @@
 {
   "name": "web-utility-js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JavaScript utilities for web develop.",
   "main": "index.js",
   "scripts": {
