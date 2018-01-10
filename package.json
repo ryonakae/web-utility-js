@@ -1,7 +1,7 @@
 {
   "name": "web-utility-js",
   "version": "0.0.1",
-  "description": "Utilities for web develop",
+  "description": "JavaScript utilities for web develop.",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --config dev/webpack.config.js",
