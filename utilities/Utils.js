@@ -54,22 +54,14 @@ module.exports = class Utils {
   }
 
   // wait for promise
-  wait(delay, initial) {
-    let waitObj;
-
-    if (initial) {
-      waitObj = new Promise(resolve => {
-        setTimeout(resolve, delay);
+  wait(delay) {
+    return value => {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(value);
+        }, delay);
       });
-    } else {
-      waitObj = () => {
-        return new Promise(resolve => {
-          setTimeout(resolve, delay);
-        });
-      };
-    }
-
-    return waitObj;
+    };
   }
 
   randomRange(min, max) {
