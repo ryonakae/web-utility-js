@@ -19,7 +19,7 @@ module.exports = class Scroller {
 
   init() {
     const parser = new UAParser();
-    this.ua = this.parser.getResult();
+    this.ua = parser.getResult();
     this.update();
 
     window.addEventListener(
