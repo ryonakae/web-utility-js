@@ -1,8 +1,6 @@
-"use strict";
+import UAParser from "ua-parser-js";
 
-const UAParser = require("ua-parser-js");
-
-module.exports = class Scroller {
+export default class Scroller {
   constructor() {
     this.ua = null;
 
@@ -128,4 +126,4 @@ module.exports = class Scroller {
   getDirection() {
     return this.scrollDirection;
   }
-};
+}

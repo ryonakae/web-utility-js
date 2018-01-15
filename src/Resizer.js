@@ -1,6 +1,4 @@
-"use strict";
-
-module.exports = class Resizer {
+export default class Resizer {
   constructor() {
     this.windowHeight = 0;
     this.windowWidth = 0;
@@ -62,4 +60,4 @@ module.exports = class Resizer {
   getWindowHeight() {
     return this.windowHeight;
   }
-};
+}

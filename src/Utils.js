@@ -1,8 +1,6 @@
-"use strict";
+import UAParser from "ua-parser-js";
 
-const UAParser = require("ua-parser-js");
-
-module.exports = class Utils {
+export default class Utils {
   constructor() {
     this.ua = null;
   }
@@ -70,4 +68,4 @@ module.exports = class Utils {
   map(value, start1, stop1, start2, stop2) {
     return start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1));
   }
-};
+}

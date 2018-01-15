@@ -1,11 +1,13 @@
 {
   "name": "web-utility-js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "JavaScript utilities for web develop.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config dev/webpack.config.js",
-    "format": "prettier '**/*.js' --write"
+    "build": "NODE_ENV=production babel src -d lib -s inline",
+    "watch": "babel src -d lib -s inline -w",
+    "format": "prettier 'src/**/*.js' --write",
+    "prepublish": "npm run format && npm run buiild"
   },
   "repository": {
     "type": "git",
@@ -21,11 +23,9 @@
     "ua-parser-js": "^0.7.17"
   },
   "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.37",
     "@babel/core": "^7.0.0-beta.37",
     "@babel/preset-env": "^7.0.0-beta.37",
-    "babel-loader": "^8.0.0-beta.0",
-    "prettier": "^1.9.2",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.10.1"
+    "prettier": "^1.9.2"
   }
 }
