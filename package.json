@@ -7,7 +7,7 @@
     "build": "NODE_ENV=production babel src -d lib -s inline",
     "watch": "babel src -d lib -s inline -w",
     "format": "prettier 'src/**/*.js' --write",
-    "prepublish": "npm run format && npm run buiild"
+    "prepublish": "npm run format && npm run build"
   },
   "repository": {
     "type": "git",
