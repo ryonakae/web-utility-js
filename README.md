@@ -8,11 +8,11 @@ JavaScript utilities for web develop.
   * Common utility functions
   * e.g. `getDevice()`, `waitPromise()`, `randomRange()`, etc.
 * Resizer.js
-  * Smart resize hundler
+  * Resize hundler
   * Throttle `resize` event
   * You can get window width and height.
 * Scroller.js
-  * Smart scroll hundler
+  * Scroll hundler
   * Execute functions on `scroll`, `wheel`, `touchmove` event fired, and throttle these event
   * You can get scroll top, bottom, amount and direction.
 
@@ -20,12 +20,14 @@ JavaScript utilities for web develop.
 
 ### Install
 
+#### yarn
+```
+$ yarn add web-utility-js
+```
+
+#### npm
 ```
 $ npm i web-utility-js
-
-or
-
-$ yarn add web-utility-js
 ```
 
 ### Import
@@ -36,7 +38,7 @@ import {Utils, Resizer, Scroller} from "web-utility-js";
 
 ### Initialize
 
-You must execute `init()` function at first.
+You must execute `init` function at first.
 
 ```
 const utils = new Utils();
